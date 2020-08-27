@@ -5,7 +5,6 @@ Usage:
 ```
 git clone https://github.com/BeanGreen247/openbox-with-windows-snapping
 cd openbox-with-windows-snapping
-./bootstrap
 ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib64
 make
 sudo make install
