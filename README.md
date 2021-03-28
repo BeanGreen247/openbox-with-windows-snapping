@@ -1,5 +1,6 @@
 # openbox-with-windows-snapping
-Patch to enable window snapping by dragging the window (aero snap) for openbox.
+### Basic info
+Patched version of the openbox window manager with the window snap feature similar to Aero snap on Windows.
 
 Usage:
 ```
@@ -10,3 +11,18 @@ make
 sudo make install
 ```
 Multiple monitors kinda work, but it's buggy.
+
+## TO-DO
+> fix screen sharing bug when Two or more monitors present (shows both monitors instead of the selected one, does not happen in obs)
+> fix snapping of apps when Two or more monitors present (snapping works fully on main monitor, but you can only snap to the top to maximize on the second monitor)
+> ~~fix performance problems~~ (some may still exist,but I have not noticed them)
+> add keyboard shortcuts for windows tiling
+
+## NOTE
+
+This project is made as a passtime activity and may not be updated all the time.
+
+## Youtube links
+
+[Main video](https://youtu.be/2yxb1ed1lJQ)
+[Small update video](https://youtu.be/yt2VVqcNcVY)

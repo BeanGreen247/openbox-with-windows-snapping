@@ -1,6 +1,6 @@
 obt/libobt_la-xml.lo: obt/xml.c /usr/include/stdc-predef.h obt/xml.h \
  /usr/include/libxml2/libxml/parser.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/stdarg.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdarg.h \
  /usr/include/libxml2/libxml/xmlversion.h \
  /usr/include/libxml2/libxml/xmlexports.h \
  /usr/include/libxml2/libxml/tree.h /usr/include/stdio.h \
@@ -8,16 +8,16 @@ obt/libobt_la-xml.lo: obt/xml.c /usr/include/stdc-predef.h obt/xml.h \
  /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
  /usr/include/gnu/stubs-64.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/stddef.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h \
  /usr/include/bits/types.h /usr/include/bits/timesize.h \
  /usr/include/bits/typesizes.h /usr/include/bits/time64.h \
  /usr/include/bits/types/__fpos_t.h /usr/include/bits/types/__mbstate_t.h \
  /usr/include/bits/types/__fpos64_t.h /usr/include/bits/types/__FILE.h \
  /usr/include/bits/types/FILE.h /usr/include/bits/types/struct_FILE.h \
- /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/bits/stdio.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed/limits.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed/syslimits.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/floatn.h \
+ /usr/include/bits/floatn-common.h /usr/include/bits/stdio.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
  /usr/include/bits/posix2_lim.h /usr/include/libxml2/libxml/xmlstring.h \
@@ -33,19 +33,18 @@ obt/libobt_la-xml.lo: obt/xml.c /usr/include/stdc-predef.h obt/xml.h \
  /usr/include/unicode/utypes.h /usr/include/unicode/umachine.h \
  /usr/include/unicode/ptypes.h /usr/include/unicode/platform.h \
  /usr/include/unicode/uconfig.h /usr/include/unicode/uvernum.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/stdint.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/wchar.h \
  /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h \
  /usr/include/unicode/urename.h /usr/include/unicode/uversion.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/float.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/float.h \
  /usr/include/unicode/utf.h /usr/include/unicode/utf8.h \
  /usr/include/unicode/utf16.h /usr/include/unicode/utf_old.h \
- /usr/include/unicode/uenum.h /usr/include/unicode/localpointer.h \
- /usr/include/libxml2/libxml/xmlIO.h \
+ /usr/include/unicode/uenum.h /usr/include/libxml2/libxml/xmlIO.h \
  /usr/include/libxml2/libxml/globals.h /usr/include/libxml2/libxml/SAX2.h \
  /usr/include/stdlib.h /usr/include/bits/waitflags.h \
- /usr/include/bits/waitstatus.h /usr/include/bits/floatn.h \
- /usr/include/bits/floatn-common.h /usr/include/sys/types.h \
+ /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
  /usr/include/bits/types/clock_t.h /usr/include/bits/types/clockid_t.h \
  /usr/include/bits/types/time_t.h /usr/include/bits/types/timer_t.h \
  /usr/include/endian.h /usr/include/bits/endian.h \
@@ -75,7 +74,7 @@ obt/libobt_la-xml.lo: obt/xml.c /usr/include/stdc-predef.h obt/xml.h \
  /usr/include/glib-2.0/glib/gatomic.h /usr/include/glib-2.0/glib/gerror.h \
  /usr/include/glib-2.0/glib/gquark.h /usr/include/glib-2.0/glib/gutils.h \
  /usr/include/glib-2.0/glib/gbacktrace.h /usr/include/signal.h \
- /usr/include/bits/signum.h /usr/include/bits/signum-generic.h \
+ /usr/include/bits/signum-generic.h /usr/include/bits/signum-arch.h \
  /usr/include/bits/types/sig_atomic_t.h \
  /usr/include/bits/types/siginfo_t.h /usr/include/bits/types/__sigval_t.h \
  /usr/include/bits/siginfo-arch.h /usr/include/bits/siginfo-consts.h \
@@ -88,15 +87,16 @@ obt/libobt_la-xml.lo: obt/xml.c /usr/include/stdc-predef.h obt/xml.h \
  /usr/include/glib-2.0/glib/gbase64.h \
  /usr/include/glib-2.0/glib/gbitlock.h \
  /usr/include/glib-2.0/glib/gbookmarkfile.h \
+ /usr/include/glib-2.0/glib/gdatetime.h \
+ /usr/include/glib-2.0/glib/gtimezone.h \
  /usr/include/glib-2.0/glib/gbytes.h \
  /usr/include/glib-2.0/glib/gcharset.h \
  /usr/include/glib-2.0/glib/gchecksum.h \
  /usr/include/glib-2.0/glib/gconvert.h \
  /usr/include/glib-2.0/glib/gdataset.h /usr/include/glib-2.0/glib/gdate.h \
- /usr/include/glib-2.0/glib/gdatetime.h \
- /usr/include/glib-2.0/glib/gtimezone.h /usr/include/glib-2.0/glib/gdir.h \
- /usr/include/dirent.h /usr/include/bits/dirent.h \
- /usr/include/bits/dirent_ext.h /usr/include/glib-2.0/glib/genviron.h \
+ /usr/include/glib-2.0/glib/gdir.h /usr/include/dirent.h \
+ /usr/include/bits/dirent.h /usr/include/bits/dirent_ext.h \
+ /usr/include/glib-2.0/glib/genviron.h \
  /usr/include/glib-2.0/glib/gfileutils.h \
  /usr/include/glib-2.0/glib/ggettext.h /usr/include/glib-2.0/glib/ghash.h \
  /usr/include/glib-2.0/glib/glist.h /usr/include/glib-2.0/glib/gmem.h \
@@ -126,15 +126,19 @@ obt/libobt_la-xml.lo: obt/xml.c /usr/include/stdc-predef.h obt/xml.h \
  /usr/include/glib-2.0/glib/gscanner.h \
  /usr/include/glib-2.0/glib/gsequence.h \
  /usr/include/glib-2.0/glib/gshell.h /usr/include/glib-2.0/glib/gslice.h \
+ /usr/include/string.h /usr/include/strings.h \
  /usr/include/glib-2.0/glib/gspawn.h \
  /usr/include/glib-2.0/glib/gstrfuncs.h \
  /usr/include/glib-2.0/glib/gstringchunk.h \
- /usr/include/glib-2.0/glib/gtestutils.h /usr/include/string.h \
- /usr/include/strings.h /usr/include/glib-2.0/glib/gthreadpool.h \
+ /usr/include/glib-2.0/glib/gstrvbuilder.h \
+ /usr/include/glib-2.0/glib/gtestutils.h /usr/include/errno.h \
+ /usr/include/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h \
+ /usr/include/glib-2.0/glib/gthreadpool.h \
  /usr/include/glib-2.0/glib/gtimer.h \
  /usr/include/glib-2.0/glib/gtrashstack.h \
- /usr/include/glib-2.0/glib/gtree.h \
- /usr/include/glib-2.0/glib/gurifuncs.h \
+ /usr/include/glib-2.0/glib/gtree.h /usr/include/glib-2.0/glib/guri.h \
  /usr/include/glib-2.0/glib/guuid.h /usr/include/glib-2.0/glib/gversion.h \
  /usr/include/glib-2.0/glib/deprecated/gallocator.h \
  /usr/include/glib-2.0/glib/deprecated/gcache.h \
@@ -145,16 +149,18 @@ obt/libobt_la-xml.lo: obt/xml.c /usr/include/stdc-predef.h obt/xml.h \
  /usr/include/sched.h /usr/include/bits/sched.h \
  /usr/include/bits/types/struct_sched_param.h /usr/include/bits/cpu-set.h \
  /usr/include/bits/setjmp.h \
+ /usr/include/bits/types/struct___jmp_buf_tag.h \
  /usr/include/glib-2.0/glib/glib-autocleanups.h obt/paths.h \
  /usr/include/libxml2/libxml/xinclude.h /usr/include/sys/stat.h \
- /usr/include/bits/stat.h /usr/include/unistd.h \
- /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
- /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
- /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h
+ /usr/include/bits/stat.h /usr/include/bits/struct_stat.h \
+ /usr/include/unistd.h /usr/include/bits/posix_opt.h \
+ /usr/include/bits/environments.h /usr/include/bits/confname.h \
+ /usr/include/bits/getopt_posix.h /usr/include/bits/getopt_core.h \
+ /usr/include/bits/unistd_ext.h
 /usr/include/stdc-predef.h:
 obt/xml.h:
 /usr/include/libxml2/libxml/parser.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/stdarg.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdarg.h:
 /usr/include/libxml2/libxml/xmlversion.h:
 /usr/include/libxml2/libxml/xmlexports.h:
 /usr/include/libxml2/libxml/tree.h:
@@ -166,7 +172,7 @@ obt/xml.h:
 /usr/include/bits/long-double.h:
 /usr/include/gnu/stubs.h:
 /usr/include/gnu/stubs-64.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/stddef.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h:
 /usr/include/bits/types.h:
 /usr/include/bits/timesize.h:
 /usr/include/bits/typesizes.h:
@@ -178,10 +184,11 @@ obt/xml.h:
 /usr/include/bits/types/FILE.h:
 /usr/include/bits/types/struct_FILE.h:
 /usr/include/bits/stdio_lim.h:
-/usr/include/bits/sys_errlist.h:
+/usr/include/bits/floatn.h:
+/usr/include/bits/floatn-common.h:
 /usr/include/bits/stdio.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed/limits.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed/syslimits.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed/limits.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed/syslimits.h:
 /usr/include/limits.h:
 /usr/include/bits/posix1_lim.h:
 /usr/include/bits/local_lim.h:
@@ -206,28 +213,26 @@ obt/xml.h:
 /usr/include/unicode/platform.h:
 /usr/include/unicode/uconfig.h:
 /usr/include/unicode/uvernum.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/stdint.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdint.h:
 /usr/include/stdint.h:
 /usr/include/bits/wchar.h:
 /usr/include/bits/stdint-intn.h:
 /usr/include/bits/stdint-uintn.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdbool.h:
 /usr/include/unicode/urename.h:
 /usr/include/unicode/uversion.h:
-/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/float.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/float.h:
 /usr/include/unicode/utf.h:
 /usr/include/unicode/utf8.h:
 /usr/include/unicode/utf16.h:
 /usr/include/unicode/utf_old.h:
 /usr/include/unicode/uenum.h:
-/usr/include/unicode/localpointer.h:
 /usr/include/libxml2/libxml/xmlIO.h:
 /usr/include/libxml2/libxml/globals.h:
 /usr/include/libxml2/libxml/SAX2.h:
 /usr/include/stdlib.h:
 /usr/include/bits/waitflags.h:
 /usr/include/bits/waitstatus.h:
-/usr/include/bits/floatn.h:
-/usr/include/bits/floatn-common.h:
 /usr/include/sys/types.h:
 /usr/include/bits/types/clock_t.h:
 /usr/include/bits/types/clockid_t.h:
@@ -276,8 +281,8 @@ obt/xml.h:
 /usr/include/glib-2.0/glib/gutils.h:
 /usr/include/glib-2.0/glib/gbacktrace.h:
 /usr/include/signal.h:
-/usr/include/bits/signum.h:
 /usr/include/bits/signum-generic.h:
+/usr/include/bits/signum-arch.h:
 /usr/include/bits/types/sig_atomic_t.h:
 /usr/include/bits/types/siginfo_t.h:
 /usr/include/bits/types/__sigval_t.h:
@@ -298,14 +303,14 @@ obt/xml.h:
 /usr/include/glib-2.0/glib/gbase64.h:
 /usr/include/glib-2.0/glib/gbitlock.h:
 /usr/include/glib-2.0/glib/gbookmarkfile.h:
+/usr/include/glib-2.0/glib/gdatetime.h:
+/usr/include/glib-2.0/glib/gtimezone.h:
 /usr/include/glib-2.0/glib/gbytes.h:
 /usr/include/glib-2.0/glib/gcharset.h:
 /usr/include/glib-2.0/glib/gchecksum.h:
 /usr/include/glib-2.0/glib/gconvert.h:
 /usr/include/glib-2.0/glib/gdataset.h:
 /usr/include/glib-2.0/glib/gdate.h:
-/usr/include/glib-2.0/glib/gdatetime.h:
-/usr/include/glib-2.0/glib/gtimezone.h:
 /usr/include/glib-2.0/glib/gdir.h:
 /usr/include/dirent.h:
 /usr/include/bits/dirent.h:
@@ -349,17 +354,24 @@ obt/xml.h:
 /usr/include/glib-2.0/glib/gsequence.h:
 /usr/include/glib-2.0/glib/gshell.h:
 /usr/include/glib-2.0/glib/gslice.h:
+/usr/include/string.h:
+/usr/include/strings.h:
 /usr/include/glib-2.0/glib/gspawn.h:
 /usr/include/glib-2.0/glib/gstrfuncs.h:
 /usr/include/glib-2.0/glib/gstringchunk.h:
+/usr/include/glib-2.0/glib/gstrvbuilder.h:
 /usr/include/glib-2.0/glib/gtestutils.h:
-/usr/include/string.h:
-/usr/include/strings.h:
+/usr/include/errno.h:
+/usr/include/bits/errno.h:
+/usr/include/linux/errno.h:
+/usr/include/asm/errno.h:
+/usr/include/asm-generic/errno.h:
+/usr/include/asm-generic/errno-base.h:
 /usr/include/glib-2.0/glib/gthreadpool.h:
 /usr/include/glib-2.0/glib/gtimer.h:
 /usr/include/glib-2.0/glib/gtrashstack.h:
 /usr/include/glib-2.0/glib/gtree.h:
-/usr/include/glib-2.0/glib/gurifuncs.h:
+/usr/include/glib-2.0/glib/guri.h:
 /usr/include/glib-2.0/glib/guuid.h:
 /usr/include/glib-2.0/glib/gversion.h:
 /usr/include/glib-2.0/glib/deprecated/gallocator.h:
@@ -374,11 +386,13 @@ obt/xml.h:
 /usr/include/bits/types/struct_sched_param.h:
 /usr/include/bits/cpu-set.h:
 /usr/include/bits/setjmp.h:
+/usr/include/bits/types/struct___jmp_buf_tag.h:
 /usr/include/glib-2.0/glib/glib-autocleanups.h:
 obt/paths.h:
 /usr/include/libxml2/libxml/xinclude.h:
 /usr/include/sys/stat.h:
 /usr/include/bits/stat.h:
+/usr/include/bits/struct_stat.h:
 /usr/include/unistd.h:
 /usr/include/bits/posix_opt.h:
 /usr/include/bits/environments.h:

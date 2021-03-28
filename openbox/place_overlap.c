@@ -27,14 +27,20 @@
 static void make_grid(const Rect* client_rects,
                       int n_client_rects,
                       const Rect* monitor,
+                      const Rect* monitor1,
                       int* x_edges,
                       int* y_edges,
-                      int max_edges);
+                      int* x_edges1,
+                      int* y_edges1,
+                      int max_edges,
+                      int max_edges1);
 
 static int best_direction(const Point* grid_point,
+                          const Point* grid_point1,
                           const Rect* client_rects,
                           int n_client_rects,
                           const Rect* monitor,
+                          const Rect* monitor1,
                           const Size* req_size,
                           Point* best_top_left);
 
@@ -43,30 +49,41 @@ static int total_overlap(const Rect* client_rects,
                          const Rect* proposed_rect);
 
 static void center_in_field(Point* grid_point,
+                            Point* grid_point1,
                             const Size* req_size,
-                            const Rect *monitor,
+                            const Rect* monitor,
+                            const Rect* monitor1,
                             const Rect* client_rects,
                             int n_client_rects,
                             const int* x_edges,
                             const int* y_edges,
-                            int max_edges);
+                            const int* x_edges1,
+                            const int* y_edges1,
+                            int max_edges,
+                            int max_edges1);
 
 /* Choose the placement on a grid with least overlap */
 
 void place_overlap_find_least_placement(const Rect* client_rects,
                                         int n_client_rects,
-                                        const Rect *monitor,
+                                        const Rect* monitor,
+                                        const Rect* monitor1,
                                         const Size* req_size,
                                         Point* result)
 {
     POINT_SET(*result, monitor->x, monitor->y);
     int overlap = G_MAXINT;
     int max_edges = 2 * (n_client_rects + 1);
+    POINT_SET(*result, monitor1->x, monitor1->y);
+    int overlap1 = G_MAXINT;
+    int max_edges1 = 2 * (n_client_rects + 1);
 
     int x_edges[max_edges];
     int y_edges[max_edges];
-    make_grid(client_rects, n_client_rects, monitor,
-            x_edges, y_edges, max_edges);
+    int x_edges1[max_edges1];
+    int y_edges1[max_edges1];
+    make_grid(client_rects, n_client_rects, monitor, monitor1,
+            x_edges, y_edges, x_edges1, y_edges1, max_edges, max_edges1);
     int i;
     for (i = 0; i < max_edges; ++i) {
         if (x_edges[i] == G_MAXINT)
@@ -76,10 +93,11 @@ void place_overlap_find_least_placement(const Rect* client_rects,
             if (y_edges[j] == G_MAXINT)
                 break;
             Point grid_point = {.x = x_edges[i], .y = y_edges[j]};
+            Point grid_point1 = {.x = x_edges1[i], .y = y_edges1[j]};
             Point best_top_left;
             int this_overlap =
-                best_direction(&grid_point, client_rects, n_client_rects,
-                        monitor, req_size, &best_top_left);
+                best_direction(&grid_point, &grid_point1, client_rects, n_client_rects,
+                        monitor, monitor1, req_size, &best_top_left);
             if (this_overlap < overlap) {
                 overlap = this_overlap;
                 *result = best_top_left;
@@ -92,13 +110,18 @@ void place_overlap_find_least_placement(const Rect* client_rects,
     }
     if (config_place_center && overlap == 0) {
         center_in_field(result,
+                        result,
                         req_size,
                         monitor,
+                        monitor1,
                         client_rects,
                         n_client_rects,
                         x_edges,
                         y_edges,
-                        max_edges);
+                        x_edges1,
+                        y_edges1,
+                        max_edges,
+                        max_edges1);
     }
 }
 
@@ -130,26 +153,49 @@ static void uniquify(int* edges,
 static void make_grid(const Rect* client_rects,
                       int n_client_rects,
                       const Rect* monitor,
+                      const Rect* monitor1,
                       int* x_edges,
                       int* y_edges,
-                      int max_edges)
+                      int* x_edges1,
+                      int* y_edges1,
+                      int max_edges,
+                      int max_edges1)
 {
     int i;
     int n_edges = 0;
     for (i = 0; i < n_client_rects; ++i) {
         if (!RECT_INTERSECTS_RECT(client_rects[i], *monitor))
             continue;
+        if (!RECT_INTERSECTS_RECT(client_rects[i], *monitor1))
+            continue;
         x_edges[n_edges] = client_rects[i].x;
         y_edges[n_edges++] = client_rects[i].y;
         x_edges[n_edges] = client_rects[i].x + client_rects[i].width;
         y_edges[n_edges++] = client_rects[i].y + client_rects[i].height;
+        x_edges1[n_edges] = client_rects[i].x;
+        y_edges1[n_edges++] = client_rects[i].y;
+        x_edges1[n_edges] = client_rects[i].x + client_rects[i].width;
+        y_edges1[n_edges++] = client_rects[i].y + client_rects[i].height;
     }
     x_edges[n_edges] = monitor->x;
     y_edges[n_edges++] = monitor->y;
     x_edges[n_edges] = monitor->x + monitor->width;
     y_edges[n_edges++] = monitor->y + monitor->height;
+    x_edges[n_edges] = monitor1->x;
+    y_edges[n_edges++] = monitor1->y;
+    x_edges[n_edges] = monitor1->x + monitor1->width;
+    y_edges[n_edges++] = monitor1->y + monitor1->height;
+    x_edges1[n_edges] = monitor->x;
+    y_edges1[n_edges++] = monitor->y;
+    x_edges1[n_edges] = monitor->x + monitor->width;
+    y_edges1[n_edges++] = monitor->y + monitor->height;
+    x_edges1[n_edges] = monitor1->x;
+    y_edges1[n_edges++] = monitor1->y;
+    x_edges1[n_edges] = monitor1->x + monitor1->width;
+    y_edges1[n_edges++] = monitor1->y + monitor1->height;
     for (i = n_edges; i < max_edges; ++i)
         x_edges[i] = y_edges[i] = G_MAXINT;
+        x_edges1[i] = y_edges1[i] = G_MAXINT;
     qsort(x_edges, n_edges, sizeof(int), compare_ints);
     uniquify(x_edges, n_edges);
     qsort(y_edges, n_edges, sizeof(int), compare_ints);
@@ -207,9 +253,13 @@ typedef void ((*ExpandByMethod)(Rect*, int));
    order to save pushing the same parameters twice. */
 typedef struct _ExpandInfo {
     const Point* top_left;
+    const Point* top_left1;
     int orig_width;
     int orig_height;
+    int orig_width1;
+    int orig_height1;
     const Rect* monitor;
+    const Rect* monitor1;
     const Rect* client_rects;
     int n_client_rects;
     int max_edges;
@@ -238,6 +288,29 @@ static int expand_field(int orig_edge_index,
     return edge_index;
 }
 
+static int expand_field1(int orig_edge_index1,
+                        const int* edges,
+                        ExpandByMethod expand_by,
+                        const ExpandInfo* i)
+{
+    Rect field;
+    RECT_SET(field,
+             i->top_left1->x,
+             i->top_left1->y,
+             i->orig_width1,
+             i->orig_height1);
+    int edge_index1 = orig_edge_index1;
+    while (edge_index1 < i->max_edges - 1) {
+        int next_edge_index1 = edge_index1 + 1;
+        (*expand_by)(&field, edges[next_edge_index1] - edges[edge_index1]);
+        int overlap = total_overlap(i->client_rects, i->n_client_rects, &field);
+        if (overlap != 0 || !RECT_CONTAINS_RECT(*(i->monitor1), field))
+            break;
+        edge_index1 = next_edge_index1;
+    }
+    return edge_index1;
+}
+
 /* The algortihm used for centering a rectangle in a grid field: First
    find the smallest rectangle of grid lines that enclose the given
    rectangle.  By definition, there is no overlap with any of the other
@@ -249,13 +322,18 @@ static int expand_field(int orig_edge_index,
    Otherwise, just use the minimal one.  */
 
 static void center_in_field(Point* top_left,
+                            Point* top_left1,
                             const Size* req_size,
                             const Rect *monitor,
+                            const Rect *monitor1,
                             const Rect* client_rects,
                             int n_client_rects,
                             const int* x_edges,
                             const int* y_edges,
-                            int max_edges)
+                            const int* x_edges1,
+                            const int* y_edges1,
+                            int max_edges,
+                            int max_edges1)
 {
     /* Find minimal rectangle. */
     int orig_right_edge_index =
@@ -264,29 +342,51 @@ static void center_in_field(Point* top_left,
     int orig_bottom_edge_index =
         find_first_grid_position_greater_or_equal(
             top_left->y + req_size->height, y_edges, max_edges);
+    int orig_right_edge_index1 =
+        find_first_grid_position_greater_or_equal(
+            top_left1->x + req_size->width, x_edges1, max_edges);
+    int orig_bottom_edge_index1 =
+        find_first_grid_position_greater_or_equal(
+            top_left1->y + req_size->height, y_edges1, max_edges);
     ExpandInfo i = {
         .top_left = top_left,
+        .top_left1 = top_left1,
         .orig_width = x_edges[orig_right_edge_index] - top_left->x,
         .orig_height = y_edges[orig_bottom_edge_index] - top_left->y,
+        .orig_width = x_edges1[orig_right_edge_index] - top_left->x,
+        .orig_height = y_edges1[orig_bottom_edge_index] - top_left->y,
+        .orig_width = x_edges[orig_right_edge_index] - top_left1->x,
+        .orig_height = y_edges[orig_bottom_edge_index] - top_left1->y,
+        .orig_width = x_edges1[orig_right_edge_index] - top_left1->x,
+        .orig_height = y_edges1[orig_bottom_edge_index] - top_left1->y,
         .monitor = monitor,
+        .monitor1 = monitor1,
         .client_rects = client_rects,
         .n_client_rects = n_client_rects,
         .max_edges = max_edges};
     /* Try extending width. */
     int right_edge_index =
         expand_field(orig_right_edge_index, x_edges, expand_width, &i);
+    int right_edge_index1 =
+        expand_field(orig_right_edge_index, x_edges1, expand_width, &i);
     /* Try extending height. */
     int bottom_edge_index =
         expand_field(orig_bottom_edge_index, y_edges, expand_height, &i);
+    int bottom_edge_index1 =
+        expand_field(orig_bottom_edge_index, y_edges1, expand_height, &i);
 
     int final_width = x_edges[orig_right_edge_index] - top_left->x;
     int final_height = y_edges[orig_bottom_edge_index] - top_left->y;
+    int final_width1 = x_edges1[orig_right_edge_index] - top_left->x;
+    int final_height1 = y_edges1[orig_bottom_edge_index] - top_left->y;
     if (right_edge_index == orig_right_edge_index &&
         bottom_edge_index != orig_bottom_edge_index)
         final_height = y_edges[bottom_edge_index] - top_left->y;
-    else if (right_edge_index != orig_right_edge_index &&
+        final_height1 = y_edges1[bottom_edge_index] - top_left->y;
+    if (right_edge_index != orig_right_edge_index &&
              bottom_edge_index == orig_bottom_edge_index)
         final_width = x_edges[right_edge_index] - top_left->x;
+        final_width1 = x_edges1[right_edge_index] - top_left->x;
 
     /* Now center the given rectangle within the field */
     top_left->x += (final_width - req_size->width) / 2;
@@ -299,17 +399,20 @@ static void center_in_field(Point* top_left,
    Point of such rectangle and the resulting overlap amount.  Only
    consider placements within BOUNDS. */
 
-#define NUM_DIRECTIONS 4
+#define NUM_DIRECTIONS 7
 
 static int best_direction(const Point* grid_point,
+                          const Point* grid_point1,
                           const Rect* client_rects,
                           int n_client_rects,
                           const Rect* monitor,
+                          const Rect* monitor1,
                           const Size* req_size,
                           Point* best_top_left)
 {
     static const Size directions[NUM_DIRECTIONS] = {
-        {0, 0}, {0, -1}, {-1, 0}, {-1, -1}
+        {0, 0}, {0, -1}, {-1, 0}, {-1, -1},
+        {0, 1}, {1, 0}, {1, 1}
     };
     int overlap = G_MAXINT;
     int i;

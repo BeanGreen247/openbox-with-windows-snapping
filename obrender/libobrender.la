@@ -17,7 +17,7 @@ old_library='libobrender.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' /home/beangreen247/openbox/obt/libobt.la -lXinerama -lXrender -lXrandr -lXext -lSM -lICE -lX11 -lpangoxft-1.0 -lpangoft2-1.0 -lpango-1.0 -lharfbuzz -lfontconfig -lfreetype -lXft -lImlib2 -lrsvg-2 -lm -lgio-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0 -lcairo -lxml2'
+dependency_libs=' /home/beangreen247/openbox-with-windows-snapping/obt/libobt.la -lXinerama -lXrender -lXrandr -lXext -lSM -lICE -lX11 -lpangoxft-1.0 -lpangoft2-1.0 -lpango-1.0 -lharfbuzz -lfontconfig -lfreetype -lXft -lImlib2 -lrsvg-2 -lm -lgio-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0 -lcairo -lxml2'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -39,4 +39,4 @@ dlpreopen=''
 
 # Directory that this library needs to be installed in:
 libdir='/usr/lib64'
-relink_command="(cd /home/beangreen247/openbox; /bin/sh \"/home/beangreen247/openbox/libtool\"  --silent --silent --tag CC --mode=relink gcc -g -O2 -DNDEBUG -DG_DISABLE_ASSERT -fno-strict-aliasing -version-info 29:2:0 -o obrender/libobrender.la -rpath /usr/lib64 obrender/libobrender_la-button.lo obrender/libobrender_la-color.lo obrender/libobrender_la-font.lo obrender/libobrender_la-gradient.lo obrender/libobrender_la-image.lo obrender/libobrender_la-imagecache.lo obrender/libobrender_la-instance.lo obrender/libobrender_la-mask.lo obrender/libobrender_la-render.lo obrender/libobrender_la-theme.lo obt/libobt.la -lSM -lICE -lX11 -lpangoxft-1.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lharfbuzz -lfontconfig -lfreetype -lXft -lglib-2.0 -lImlib2 -lrsvg-2 -lm -lgio-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0 -lcairo -lxml2 @inst_prefix_dir@)"
+relink_command="(cd /home/beangreen247/openbox-with-windows-snapping; /bin/sh \"/home/beangreen247/openbox-with-windows-snapping/libtool\"  --silent --silent --tag CC --mode=relink gcc -g -O2 -DNDEBUG -DG_DISABLE_ASSERT -fno-strict-aliasing -version-info 29:2:0 -o obrender/libobrender.la -rpath /usr/lib64 obrender/libobrender_la-button.lo obrender/libobrender_la-color.lo obrender/libobrender_la-font.lo obrender/libobrender_la-gradient.lo obrender/libobrender_la-image.lo obrender/libobrender_la-imagecache.lo obrender/libobrender_la-instance.lo obrender/libobrender_la-mask.lo obrender/libobrender_la-render.lo obrender/libobrender_la-theme.lo obt/libobt.la -lSM -lICE -lX11 -lpangoxft-1.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lharfbuzz -lfontconfig -lfreetype -lXft -lglib-2.0 -lImlib2 -lrsvg-2 -lm -lgio-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0 -lcairo -lxml2 @inst_prefix_dir@)"

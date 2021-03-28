@@ -215,6 +215,7 @@ void client_manage(Window window, ObPrompt *prompt)
     ObAppSettings *settings;
     gboolean transient = FALSE;
     Rect place;
+    Rect place1;
     Time launch_time;
     guint32 user_time;
     gboolean obplaced;
@@ -341,6 +342,7 @@ void client_manage(Window window, ObPrompt *prompt)
 
     /* where the frame was placed is where the window was originally */
     place = self->area;
+    place1 = self->area;
 
     ob_debug("Going to try activate new window? %s",
              try_activate ? "yes" : "no");
@@ -416,11 +418,53 @@ void client_manage(Window window, ObPrompt *prompt)
                                  settings->pos_given) &&
                                client_normal(self) &&
                                !self->session &&
-                               /* don't move oldschool fullscreen windows to
-                                  fit inside the struts (fixes Acroread, which
-                                  makes its fullscreen window fit the screen
-                                  but it is not USSize'd or USPosition'd) */
                                !client_is_oldfullscreen(self, &place))));
+    }
+
+    if (ob_state() == OB_STATE_RUNNING) {
+        ob_debug("Positioned: %s @ %d %d",
+                 (!self->positioned ? "no" :
+                  (self->positioned == PPosition ? "program specified" :
+                   (self->positioned == USPosition ? "user specified" :
+                    (self->positioned == (PPosition | USPosition) ?
+                     "program + user specified" :
+                     "BADNESS !?")))), place1.x, place1.y);
+
+        ob_debug("Sized: %s @ %d %d",
+                 (!self->sized ? "no" :
+                  (self->sized == PSize ? "program specified" :
+                   (self->sized == USSize ? "user specified" :
+                    (self->sized == (PSize | USSize) ?
+                     "program + user specified" :
+                     "BADNESS !?")))), place1.width, place1.height);
+
+        obplaced = place_client(self, do_activate, &place1, settings);
+
+        if (!obplaced && place1.x == 0 && place1.y == 0 &&
+            client_normal(self) &&
+            !client_is_oldfullscreen(self, &place1))
+        {
+            Rect *r;
+
+            r = screen_area(self->desktop, SCREEN_AREA_ALL_MONITORS, NULL);
+            if (r->x || r->y) {
+                place1.x = r->x;
+                place1.y = r->y;
+                ob_debug("Moving buggy app from (0,0) to (%d,%d)", r->x, r->y);
+            }
+            g_slice_free(Rect, r);
+        }
+
+        client_find_onscreen(self, &place1.x, &place1.y,
+                             place1.width, place1.height,
+                             ob_state() == OB_STATE_RUNNING &&
+                             (self->type == OB_CLIENT_TYPE_DIALOG ||
+                              self->type == OB_CLIENT_TYPE_SPLASH ||
+                              (!((self->positioned & USPosition) ||
+                                 settings->pos_given) &&
+                               client_normal(self) &&
+                               !self->session &&
+                               !client_is_oldfullscreen(self, &place1))));
     }
 
     /* if the window isn't user-sized, then make it fit inside
@@ -459,6 +503,25 @@ void client_manage(Window window, ObPrompt *prompt)
         place.height -= self->frame->size.top + self->frame->size.bottom;
 
         g_slice_free(Rect, a);
+    }
+    {
+        Rect *a1 = screen_area(self->desktop, SCREEN_AREA_ONE_MONITOR, &place);
+
+        /* get the size of the frame */
+        place.width += self->frame->size.left + self->frame->size.right;
+        place.height += self->frame->size.top + self->frame->size.bottom;
+
+        /* fit the window inside the area */
+        place.width = MIN(place.width, a1->width);
+        place.height = MIN(place.height, a1->height);
+
+        ob_debug("setting window size to %dx%d", place.width, place.height);
+
+        /* get the size of the client back */
+        place.width -= self->frame->size.left + self->frame->size.right;
+        place.height -= self->frame->size.top + self->frame->size.bottom;
+
+        g_slice_free(Rect, a1);
     }
 
     ob_debug("placing window 0x%x at %d, %d with size %d x %d. "

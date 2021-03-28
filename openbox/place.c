@@ -381,7 +381,7 @@ static gboolean place_transient_splash(ObClient *client, Rect *area,
     return FALSE;
 }
 
-static gboolean place_least_overlap(ObClient *c, Rect *head, int *x, int *y,
+static gboolean place_least_overlap(ObClient *c, Rect *head, Rect *head1, int *x, int *y,
                                     Size frame_size)
 {
     /* Assemble the list of windows that could overlap with @c in the user's
@@ -442,7 +442,7 @@ static gboolean place_least_overlap(ObClient *c, Rect *head, int *x, int *y,
         }
         g_slist_free(potential_overlap_clients);
 
-        place_overlap_find_least_placement(client_rects, n_client_rects, head,
+        place_overlap_find_least_placement(client_rects, n_client_rects, head, head1,
                                            &frame_size, &result);
         *x = result.x;
         *y = result.y;
@@ -497,7 +497,7 @@ gboolean place_client(ObClient *client, gboolean client_to_be_foregrounded,
                                        frame_size) ||
         place_transient_splash(client, monitor_area, x, y, frame_size) ||
         place_under_mouse(client, x, y, frame_size) ||
-        place_least_overlap(client, monitor_area, x, y, frame_size);
+        place_least_overlap(client, monitor_area, monitor_area, x, y, frame_size);
     g_assert(ret);
 
     g_slice_free(Rect, monitor_area);
