@@ -14,8 +14,11 @@ Multiple monitors kinda work, but it's buggy.
 
 ## TO-DO
 > fix screen sharing bug when Two or more monitors present (shows both monitors instead of the selected one, does not happen in obs)
+>
 > fix snapping of apps when Two or more monitors present (snapping works fully on main monitor, but you can only snap to the top to maximize on the second monitor)
+>
 > ~~fix performance problems~~ (some may still exist,but I have not noticed them)
+>
 > add keyboard shortcuts for windows tiling
 
 ## NOTE
