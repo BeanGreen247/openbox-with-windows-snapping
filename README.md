@@ -21,6 +21,9 @@ Multiple monitors kinda work, but it's buggy.
 >
 > add keyboard shortcuts for windows tiling
 
+## BUGS I FOUND
+> Opening more than 4 terminal emulators causes openbox to crash and long the user out
+
 ## NOTE
 
 This project is made as a passtime activity and may not be updated all the time.
