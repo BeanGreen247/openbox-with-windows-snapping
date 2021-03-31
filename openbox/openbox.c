@@ -731,8 +731,8 @@ static Cursor load_cursor(const gchar *name, guint fontval)
 void ob_exit_with_error(const gchar *msg)
 {
     g_message("%s", msg);
-    session_shutdown(TRUE);
-    exit(EXIT_FAILURE);
+    //session_shutdown(TRUE);
+    //exit(EXIT_FAILURE);
 }
 
 void ob_restart_other(const gchar *path)

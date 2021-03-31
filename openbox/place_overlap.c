@@ -72,8 +72,10 @@ void place_overlap_find_least_placement(const Rect* client_rects,
                                         Point* result)
 {
     POINT_SET(*result, monitor->x, monitor->y);
+    POINT_SET(*result, monitor1->x, monitor1->y);
     int overlap = G_MAXINT;
     int max_edges = 2 * (n_client_rects + 1);
+    POINT_SET(*result, monitor->x, monitor->y);
     POINT_SET(*result, monitor1->x, monitor1->y);
     int overlap1 = G_MAXINT;
     int max_edges1 = 2 * (n_client_rects + 1);
@@ -411,8 +413,7 @@ static int best_direction(const Point* grid_point,
                           Point* best_top_left)
 {
     static const Size directions[NUM_DIRECTIONS] = {
-        {0, 0}, {0, -1}, {-1, 0}, {-1, -1},
-        {0, 1}, {1, 0}, {1, 1}
+        {0, 0}, {0, 1}, {1, 0}, {1, 1}
     };
     int overlap = G_MAXINT;
     int i;

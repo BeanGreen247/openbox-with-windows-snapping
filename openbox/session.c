@@ -451,7 +451,7 @@ static void sm_save_yourself(SmcConn conn, SmPointer data, gint save_type,
 static void sm_die(SmcConn conn, SmPointer data)
 {
     ob_debug_type(OB_DEBUG_SM, "Die requested");
-    ob_exit(0);
+    //ob_exit(0);
 }
 
 static void sm_save_complete(SmcConn conn, SmPointer data)
