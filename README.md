@@ -23,6 +23,7 @@ Multiple monitors kinda work, but it's buggy.
 
 ## BUGS I FOUND
 > ~~Opening more than 4 terminal emulators in one go, like running at the same time, causes openbox to crash and long the user out~~
+> 
 > Opening more than 8 terminal emulators in one go, like running at the same time, causes openbox to crash and long the user out
 
 ## NOTE
