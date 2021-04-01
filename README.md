@@ -37,6 +37,23 @@ This project is made as a passtime activity and may not be updated all the time.
 * libpango1.0-dev
 * libxml2-dev
 * automake
+* perl
+
+## May need to do
+```
+git clone https://github.com/trizen/Linux-DesktopFiles
+cd Linux-DesktopFiles
+cpan Module::Build
+perl Build.PL
+     ./Build
+     ./Build test
+     ./Build install
+```
+
+## Recommendation
+To make it easier to use install these packages
+* dmenu //not requried but cool to have
+* vala-panel //a simple panel
 
 ## Youtube links
 
