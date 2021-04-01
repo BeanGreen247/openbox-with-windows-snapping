@@ -19,12 +19,14 @@ Multiple monitors kinda work, but it's buggy.
 >
 > ~~fix performance problems~~ (some may still exist,but I have not noticed them)
 >
-> ~~add keyboard shortcuts for windows tiling~~ see [Window Tiling](#window-tiling)
+> ~~add keyboard shortcuts for windows tiling~~ see [Window Tiling](#window-tiling) [!warning!](#bugs-i-found)
 
 ## BUGS I FOUND
 > ~~Opening more than 4 terminal emulators in one go, like running at the same time, causes openbox to crash and logs the user out~~
 > 
 > Opening more than 8 terminal emulators in one go, like running at the same time, causes openbox to crash and logs the user out
+> 
+> warning, window tiling causes all windows to tile no matter what monitor, unless they are on the same monitor
 
 ## NOTE
 
