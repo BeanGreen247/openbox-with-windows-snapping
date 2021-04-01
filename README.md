@@ -32,6 +32,12 @@ Multiple monitors kinda work, but it's buggy.
 
 This project is made as a passtime activity and may not be updated all the time.
 
+## Make sure to have these packages installed
+* libglib2.0
+* libpango1.0-dev
+* libxml2-dev
+* automake
+
 ## Youtube links
 
 [Main video](https://youtu.be/2yxb1ed1lJQ)

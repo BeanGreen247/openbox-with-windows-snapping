@@ -17,7 +17,7 @@ old_library='libobrender.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' /usr/lib64/libobt.la -lXinerama -lXrender -lXrandr -lXext -lSM -lICE -lX11 -lpangoxft-1.0 -lpangoft2-1.0 -lpango-1.0 -lharfbuzz -lfontconfig -lfreetype -lXft -lImlib2 -lrsvg-2 -lm -lgio-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0 -lcairo -lxml2'
+dependency_libs=' /usr/lib64/libobt.la -lXext -lSM -lICE -lX11 -lpangoxft-1.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lfontconfig -lfreetype -lXft -lglib-2.0 -lxml2'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
