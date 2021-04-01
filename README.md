@@ -19,7 +19,7 @@ Multiple monitors kinda work, but it's buggy.
 >
 > ~~fix performance problems~~ (some may still exist,but I have not noticed them)
 >
-> add keyboard shortcuts for windows tiling
+> ~~add keyboard shortcuts for windows tiling~~ see [Window Tiling](#window-tiling)
 
 ## BUGS I FOUND
 > ~~Opening more than 4 terminal emulators in one go, like running at the same time, causes openbox to crash and logs the user out~~
@@ -35,3 +35,73 @@ This project is made as a passtime activity and may not be updated all the time.
 [Main video](https://youtu.be/2yxb1ed1lJQ)
 
 [Small update video](https://youtu.be/yt2VVqcNcVY)
+
+## Window Tiling
+Add this to your rc.xml file somewhere in the keybind section
+```
+<!-- Window tiling -->
+    <!-- Switch tiling -->
+    <keybind key="W-m">
+      <action name="If">
+        <query target="default">
+          <maximizedvertical>yes</maximizedvertical>
+        </query>
+        <!-- Switch to horizontal -->
+        <then>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo">
+            <height>50%</height>
+          </action>
+          <action name="MaximizeHorz"/>
+          <action name="MoveResizeTo">
+            <x>0</x>
+            <y>0</y>
+          </action>
+          <action name="NextWindow">
+            <interactive>no</interactive>
+            <dialog>none</dialog>
+            <finalactions>
+              <action name="UnmaximizeFull"/>
+              <action name="MoveResizeTo">
+                <height>50%</height>
+              </action>
+              <action name="MaximizeHorz"/>
+              <action name="MoveResizeTo">
+                <x>0</x>
+                <y>-0</y>
+              </action>
+            </finalactions>
+          </action>
+        </then>
+        <!-- Switch to vertical -->
+        <else>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo">
+            <width>50%</width>
+          </action>
+          <action name="MaximizeVert"/>
+          <action name="MoveResizeTo">
+            <x>0</x>
+            <y>0</y>
+          </action>
+          <action name="NextWindow">
+            <interactive>no</interactive>
+            <dialog>none</dialog>
+            <finalactions>
+              <action name="UnmaximizeFull"/>
+              <action name="MoveResizeTo">
+                <width>50%</width>
+              </action>
+              <action name="MaximizeVert"/>
+              <action name="MoveResizeTo">
+                <x>-0</x>
+                <y>0</y>
+              </action>
+            </finalactions>
+          </action>
+        </else>
+      </action>
+     </keybind>
+      <!-- Window tiling end -->
+    <!-- Keybindings for window switching with the arrow keys -->
+```
