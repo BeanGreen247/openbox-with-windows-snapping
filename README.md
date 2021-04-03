@@ -55,6 +55,24 @@ To make it easier to use install these packages
 * dmenu //not requried but cool to have
 * vala-panel //a simple panel
 
+## Suggestion
+After running the configure commad I would recommend to do this change in the Makefile before running make from this
+```
+CFLAGS = -g -O2 -DNDEBUG -DG_DISABLE_ASSERT -fno-strict-aliasing
+```
+to this
+```
+CFLAGS = -g -O3 -DNDEBUG -DG_DISABLE_ASSERT -fno-strict-aliasing
+```
+ro this
+
+```
+CFLAGS = -g -Ofast -DNDEBUG -DG_DISABLE_ASSERT -fno-strict-aliasing
+```
+It may or may not give a small performance boost.
+
+For more info go [here](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html).
+
 ## Youtube links
 
 [Main video](https://youtu.be/2yxb1ed1lJQ)
