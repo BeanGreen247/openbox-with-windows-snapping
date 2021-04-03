@@ -64,8 +64,7 @@ to this
 ```
 CFLAGS = -g -O3 -DNDEBUG -DG_DISABLE_ASSERT -fno-strict-aliasing
 ```
-ro this
-
+or this
 ```
 CFLAGS = -g -Ofast -DNDEBUG -DG_DISABLE_ASSERT -fno-strict-aliasing
 ```
