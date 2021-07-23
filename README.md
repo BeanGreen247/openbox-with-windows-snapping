@@ -39,15 +39,32 @@ This project is made as a passtime activity and may not be updated all the time.
 * automake
 * perl
 
+## Aditional dependencies cam be installed like this
+```
+sudo apt install libcpan-distnameinfo-perl libcpan-meta-check-perl libfile-pushd-perl libmodule-build-perl liblocal-lib-perl libmodule-cpanfile-perl libparse-pmfile-perl libstring-shellquote-perl libpango-perl libgtk2-perl cpanminus
+```
 ## May need to do
 ```
 git clone https://github.com/trizen/Linux-DesktopFiles
 cd Linux-DesktopFiles
 cpan Module::Build
 perl Build.PL
-     ./Build
-     ./Build test
-     ./Build install
+perl ./Build
+perl ./Build test
+perl ./Build install
+sudo cpanm Linux::DesktopFiles
+sudo cpanm Data::Dump
+```
+
+## Dynamic menu
+```
+git clone git://github.com/trizen/obmenu-generator
+sudo cp obmenu-generator/obmenu-generator /usr/bin
+```
+edit the schema.pl file for custom defaults then do the following
+```
+sudo cp -r obmenu-generator/schema.pl ~/.config/obmenu-generator
+obmenu-generator -p
 ```
 
 ## Recommendation
