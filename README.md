@@ -63,7 +63,8 @@ sudo cp obmenu-generator/obmenu-generator /usr/bin
 ```
 edit the schema.pl file for custom defaults then do the following
 ```
-sudo cp -r obmenu-generator/schema.pl ~/.config/obmenu-generator
+mkdir ~/.config/obmenu-generator
+cp -r obmenu-generator/schema.pl ~/.config/obmenu-generator/
 obmenu-generator -p
 ```
 
